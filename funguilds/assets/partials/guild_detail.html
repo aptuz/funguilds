@@ -1,0 +1,120 @@
+<div class="row p-0">
+	<div class="guild_header pt-2 b-mint-dark" style="background-image:url({[GuildData.coverpic || '']})">
+		<h1 class="txt-c f-72 mt-20 pt-20">{[ GuildData.name]}</h1>
+		<h4 class="txt-c f-20 pt-20">{[GuildData.description]}</h4>
+		<div class="row">
+			<button class="pull-r mr-20 b-mediumgray-light f-darkgray-dark" ng-click="add_games()" ng-if="user_id === GuildData.created_by">
+				<i class="fa fa-plus"></i>&nbsp;Add Games
+			</button>
+			<button class="pull-r mr-20 b-mediumgray-light f-darkgray-dark" ng-if="user_id !== GuildData.created_by && is_joined == 'NOT REQUESTED'" ng-click="join_guild()">
+					<i class="fa fa-user-plus"></i>&nbsp;Join Guild
+			</button>
+			<button class="pull-r mr-20 b-mediumgray-light f-darkgray-dark" ng-if="user_id !== GuildData.created_by && is_joined == 'REQUESTED'">
+					<i class="fa fa-check"></i>&nbsp;Requested
+			</button>
+			<button class="pull-r mr-20 b-mediumgray-light f-darkgray-dark" ng-if="user_id !== GuildData.created_by && is_joined == 'ACCEPTED'">
+					<i class="fa fa-check"></i>&nbsp;Guild Member
+			</button>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row" ng-init="guild_tab='games'">
+		<div class="col-xs-4 b-lightgray-dark p-0">
+			<div class="col-xs-6 pt-20 pb-20 f-darkgray-dark txt-c f-20" ng-click="guild_tab='games'" ng-class="{'b-lightgray-light':guild_tab=='games' }">
+	            Games
+	        </div>
+	        <div class="col-xs-6 pt-20 pb-20 f-darkgray-dark txt-c f-20" ng-click="guild_tab='requests'"  ng-class="{'b-lightgray-light':guild_tab=='requests' }">
+	            Requests
+	        </div>
+		</div>
+	</div>
+	<div class="row">
+		<!-- <div class="col-xs-9">
+			<div class="guild_games">
+				<div class="" ng-repeat="game in GuildData.game_guild">
+				<span class="game_profile_pic">
+					Profile_pic:{[ game.profile_pic || "NA"]}
+				</span><br />
+				<span>Name:{[game.game_name]}</span>
+				<br/>
+				<span>Description:{[game.game_desc]}</span>
+				<br />
+				tags:
+				<span ng-repeat="tag in game.tags">{[ tag ]}</span>
+				<br />
+				<span>Members Count: {[ GuildData.no_of_users || 0]}</span>
+				<br /><span>Grroup Type: {[ GuildData.group_type]}</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="guild_members">
+
+			</div>
+		</div> -->
+		<div class="col-xs-9" ng-if="guild_tab=='games'">
+			<div class="row mt-20 mb-20">
+				<div class="heading">
+					<h3>My Games</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3" ng-repeat="game in GuildData.game_guild" ng-click="requestGame(game.game_name)">
+					<div class="guilds clearfix">
+						<div class="guild--img">
+							<img src="http://lorempixel.com/400/500/" class="">
+						</div>
+						<div class="guild--details">
+							<h5 class="f-16 pt-5 pb-5 f-bittersweet-dark">{[game.game_name]}</h5>
+							<div class="row p-2 mb-5">
+								<span class="f-mediumgray-dark f-14">{[game.game_desc]}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-9" ng-if="guild_tab=='requests'">
+			<div class="col-xs-6 guild-requests request_{[request.id]}" ng-repeat="request in requests" ng-if="requests.length > 0">
+				<div class="row p-10 b-darkgray-light">
+					<p>
+						<span class="f-bittersweet-dark">{[request.requested_user.username]}</span> requested you to join your guild
+					</p>
+					<div class="row p-0 txt-r">
+			 			<button class="btn-radius bdr-mint-dark" ng-click="add_to_guild(request.id,$index)">
+			 				<i class="fa fa-check"></i>
+			 			</button>
+                		<button class="btn-radius bdr-btn-danger" ng-click="delete_from_guild(request.id,$index)">
+							<i class="fa fa-times"></i>
+                		</button>
+			 		</div>
+				</div>
+			</div>
+			<div class="row" ng-if="requests.length == 0">
+				<p class="txt-c p-10 b-darkgray-light f-20">
+					No Requests are present
+				</p>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="row mt-20 mb-20">
+				<div class="heading">
+					<h3>Available</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4" ng-repeat="member in GuildData.guild_members">
+					<div class="games clearfix">
+						<div class="game--img" style="height:50px;">
+							<img src="/static/images/profilepicture.png" class="">
+						</div>
+						<div class="game--details">
+							<h5 class="f-16 pt-5 pb-5 f-mint-dark f-12">{[member.username]}</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

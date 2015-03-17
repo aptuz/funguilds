@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block mainContent %}
+    <div class="container" ng-controller="accountsController">
+        <div class="row mt-35">
+            <div class="col-lg-4 col-lg-push-4 login-wrap p-0 b-lightgray-light" ng-init="login_tab='login'">
+                <div class="row txt-c f-20  p-0 b-lightgray-dark login-header">
+                    <div class="col-xs-6 pt-20 pb-20 f-darkgray-dark" ng-click="login_tab='login'" ng-class="{'b-lightgray-light':login_tab=='login' }">
+                        Sign In
+                    </div>
+                    <div class="col-xs-6 pt-20 pb-20 f-darkgray-dark" ng-click="login_tab='register'"  ng-class="{'b-lightgray-light':login_tab=='register' }">
+                        Sign Up
+                    </div>
+                </div>
+                <div class="row login-body p-10" ng-if="login_tab=='login'">
+                    <div class="row">
+                        <input type="text" class="form-control full-w bdr-0 b-lightgray-dark" placeholder="Username" ng-model="lname">
+                    </div>
+                    <div class="row">
+                        <input type="password" class="form-control full-w bdr-0 b-lightgray-dark" placeholder="Password" ng-model="lpwd">
+                    </div>
+                    <div class="row">
+                        <a href="#" class="under sub f-darkgray-dark">Forgot Password?</a>
+                        <button class="btn b-darkgray-dark f-white pull-r col-sm-3" ng-click="login($event, lname, lpwd)">login</button>
+                    </div>
+                </div>
+                <div class="row login-body p-10" ng-if="login_tab=='register'" ng-class="{block:login_tab=='register'}">
+                    <div class="row">
+                        <input type="text" ng-model="rname" class="form-control full-w bdr-0 b-lightgray-dark" placeholder="Username">
+                    </div>
+                    <div class="row">
+                        <input type="text" ng-model="remail" class="form-control full-w bdr-0 b-lightgray-dark" placeholder="Email">
+                    </div>
+                    <div class="row">
+                        <input type="password" ng-model="rpwd" class="form-control full-w bdr-0 b-lightgray-dark" placeholder="Password">
+                    </div>
+                    <div class="row">
+                        <button class="btn b-darkgray-dark f-white pull-r col-sm-3" ng-click="register($event, rname, remail, rpwd)">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

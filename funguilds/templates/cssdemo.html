@@ -1,0 +1,558 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/railscasts.min.css">
+</head>
+<body>
+    <div class="row txt-c">
+        <h1 class="f-lightgray-light">Example CSS</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <p class="txt-c f-white f-20 pos-r">
+                Grid columns and Colours for layouting
+                <a href="#" class="btn pos right show_code"><i class="fa fa-code"></i>&nbsp;code</a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="example col-xs-1 b-blue-light">.col-xs-1</div>
+                <div class="example col-xs-11 b-blue-dark">.col-xs-11</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-2 b-aqua-light">.col-xs-2</div>
+                <div class="example col-xs-10 b-aqua-dark">.col-xs-10</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-3 b-mint-light">.col-xs-3</div>
+                <div class="example col-xs-9 b-mint-dark">.col-xs-9</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-4 b-grass-light">.col-xs-4</div>
+                <div class="example col-xs-8 b-grass-dark">.col-xs-8</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-5 b-sunflower-light">.col-xs-5</div>
+                <div class="example col-xs-7 b-sunflower-dark">.col-xs-7</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-6 b-bittersweet-light">.col-xs-6</div>
+                <div class="example col-xs-6 b-bittersweet-dark">.col-xs-6</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-7 b-grapefruit-light">.col-xs-7</div>
+                <div class="example col-xs-5 b-grapefruit-dark">.col-xs-5</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-8 b-lavender-light">.col-xs-8</div>
+                <div class="example col-xs-4 b-lavender-dark">.col-xs-4</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-9 b-pinkrose-light">.col-xs-9</div>
+                <div class="example col-xs-3 b-pinkrose-dark">.col-xs-3</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-10 b-lightgray-light">.col-xs-10</div>
+                <div class="example col-xs-2 b-lightgray-dark">.col-xs-2</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-11 b-mediumgray-light">.col-xs-11</div>
+                <div class="example col-xs-1 b-mediumgray-dark">.col-xs-1</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-12 b-darkgray-light">.col-xs-12</div>
+            </div>
+        </div>
+        <div class="row hide">
+            <pre>
+                <code class="html">
+                    &lt;div class="container">
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-1 b-blue-light"&gt;.col-xs-1&lt;/div&gt;
+                            &lt;div class="col-xs-11 b-blue-dark"&gt;.col-xs-11&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-2 b-aqua-light"&gt;.col-xs-2&lt;/div&gt;
+                            &lt;div class="col-xs-10 b-aqua-dark"&gt;.col-xs-10&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-3 b-mint-light"&gt;.col-xs-3&lt;/div&gt;
+                            &lt;div class="col-xs-9 b-mint-dark"&gt;.col-xs-9&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-4 b-grass-light"&gt;.col-xs-4&lt;/div&gt;
+                            &lt;div class="col-xs-8 b-grass-dark"&gt;.col-xs-8&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-5 b-sunflower-light"&gt;.col-xs-5&lt;/div&gt;
+                            &lt;div class="col-xs-7 b-sunflower-dark"&gt;.col-xs-7&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-6 b-bittersweet-light"&gt;.col-xs-6&lt;/div&gt;
+                            &lt;div class="col-xs-6 b-bittersweet-dark"&gt;.col-xs-6&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-7 b-grapefruit-light"&gt;.col-xs-7&lt;/div&gt;
+                            &lt;div class="col-xs-5 b-grapefruit-dark"&gt;.col-xs-5&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-8 b-lavender-light"&gt;.col-xs-8&lt;/div&gt;
+                            &lt;div class="col-xs-4 b-lavender-dark"&gt;.col-xs-4&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-9 b-pinkrose-light"&gt;.col-xs-9&lt;/div&gt;
+                            &lt;div class="col-xs-3 b-pinkrose-dark"&gt;.col-xs-3&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-10 b-lightgray-light"&gt;.col-xs-10&lt;/div&gt;
+                            &lt;div class="col-xs-2 b-lightgray-dark"&gt;.col-xs-2&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-11 b-mediumgray-light"&gt;.col-xs-11&lt;/div&gt;
+                            &lt;div class="col-xs-1 b-mediumgray-dark"&gt;.col-xs-1&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="row"&gt;
+                            &lt;div class="col-xs-12 b-darkgray-light"&gt;.col-xs-12&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="container-f pt-35">
+        <div class="row">
+            <p class="txt-c f-white f-20 pos-r">
+                Grid columns and Colours for layouting full screen
+                <a href="#" class="btn pos right show_code"><i class="fa fa-code"></i>&nbsp;code</a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="example col-xs-1 b-blue-light">.col-xs-1</div>
+                <div class="example col-xs-11 b-blue-dark">.col-xs-11</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-2 b-aqua-light">.col-xs-2</div>
+                <div class="example col-xs-10 b-aqua-dark">.col-xs-10</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-3 b-mint-light">.col-xs-3</div>
+                <div class="example col-xs-9 b-mint-dark">.col-xs-9</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-4 b-grass-light">.col-xs-4</div>
+                <div class="example col-xs-8 b-grass-dark">.col-xs-8</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-5 b-sunflower-light">.col-xs-5</div>
+                <div class="example col-xs-7 b-sunflower-dark">.col-xs-7</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-6 b-bittersweet-light">.col-xs-6</div>
+                <div class="example col-xs-6 b-bittersweet-dark">.col-xs-6</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-7 b-grapefruit-light">.col-xs-7</div>
+                <div class="example col-xs-5 b-grapefruit-dark">.col-xs-5</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-8 b-lavender-light">.col-xs-8</div>
+                <div class="example col-xs-4 b-lavender-dark">.col-xs-4</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-9 b-pinkrose-light">.col-xs-9</div>
+                <div class="example col-xs-3 b-pinkrose-dark">.col-xs-3</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-10 b-lightgray-light">.col-xs-10</div>
+                <div class="example col-xs-2 b-lightgray-dark">.col-xs-2</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-11 b-mediumgray-light">.col-xs-11</div>
+                <div class="example col-xs-1 b-mediumgray-dark">.col-xs-1</div>
+            </div>
+            <div class="row">
+                <div class="example col-xs-12 b-darkgray-light">.col-xs-12</div>
+            </div>
+        </div>
+        <div class="row hide">
+            <div class="container">
+                <pre>
+                    <code class="html">
+                        &lt;div class="container-f">
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-1 b-blue-light"&gt;.col-xs-1&lt;/div&gt;
+                                &lt;div class="col-xs-11 b-blue-dark"&gt;.col-xs-11&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-2 b-aqua-light"&gt;.col-xs-2&lt;/div&gt;
+                                &lt;div class="col-xs-10 b-aqua-dark"&gt;.col-xs-10&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-3 b-mint-light"&gt;.col-xs-3&lt;/div&gt;
+                                &lt;div class="col-xs-9 b-mint-dark"&gt;.col-xs-9&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-4 b-grass-light"&gt;.col-xs-4&lt;/div&gt;
+                                &lt;div class="col-xs-8 b-grass-dark"&gt;.col-xs-8&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-5 b-sunflower-light"&gt;.col-xs-5&lt;/div&gt;
+                                &lt;div class="col-xs-7 b-sunflower-dark"&gt;.col-xs-7&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-6 b-bittersweet-light"&gt;.col-xs-6&lt;/div&gt;
+                                &lt;div class="col-xs-6 b-bittersweet-dark"&gt;.col-xs-6&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-7 b-grapefruit-light"&gt;.col-xs-7&lt;/div&gt;
+                                &lt;div class="col-xs-5 b-grapefruit-dark"&gt;.col-xs-5&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-8 b-lavender-light"&gt;.col-xs-8&lt;/div&gt;
+                                &lt;div class="col-xs-4 b-lavender-dark"&gt;.col-xs-4&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-9 b-pinkrose-light"&gt;.col-xs-9&lt;/div&gt;
+                                &lt;div class="col-xs-3 b-pinkrose-dark"&gt;.col-xs-3&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-10 b-lightgray-light"&gt;.col-xs-10&lt;/div&gt;
+                                &lt;div class="col-xs-2 b-lightgray-dark"&gt;.col-xs-2&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-11 b-mediumgray-light"&gt;.col-xs-11&lt;/div&gt;
+                                &lt;div class="col-xs-1 b-mediumgray-dark"&gt;.col-xs-1&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-xs-12 b-darkgray-light"&gt;.col-xs-12&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <p class="txt-c f-white f-20 pos-r">
+                Colours for available our system
+                <a href="#" class="btn pos right show_code"><i class="fa fa-code"></i>&nbsp;code</a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 b-blue-dark example">Blue Dark</div>
+            <div class="col-xs-2 b-blue-light example">Blue Light</div>
+            <div class="col-xs-2 b-aqua-dark example">Aqua Dark</div>
+            <div class="col-xs-2 b-aqua-light example">Aqua Light</div>
+            <div class="col-xs-2 b-mint-dark example">Mint Dark</div>
+            <div class="col-xs-2 b-mint-light example">Mint Light</div>
+            <div class="col-xs-2 b-grass-dark example">Grass Dark</div>
+            <div class="col-xs-2 b-grass-light example">Grass Light</div>
+            <div class="col-xs-2 b-sunflower-dark example">Sunflower Dark</div>
+            <div class="col-xs-2 b-sunflower-light example">Sunflower Light</div>
+            <div class="col-xs-2 b-bittersweet-dark example">Bittersweet Dark</div>
+            <div class="col-xs-2 b-bittersweet-light example">Bittersweet Light</div>
+            <div class="col-xs-2 b-grapefruit-dark example">Grapefruit Dark</div>
+            <div class="col-xs-2 b-grapefruit-light example">Grapefruit Light</div>
+            <div class="col-xs-2 b-lavender-dark example">Lavender Dark</div>
+            <div class="col-xs-2 b-lavender-light example">Lavender Light</div>
+            <div class="col-xs-2 b-pinkrose-dark example">Pinkrose Dark</div>
+            <div class="col-xs-2 b-pinkrose-light example">Pinkrose Light</div>
+            <div class="col-xs-2 b-lightgray-dark example">Lightgray Dark</div>
+            <div class="col-xs-2 b-lightgray-light example">Lightgray Light</div>
+            <div class="col-xs-2 b-mediumgray-dark example">Mediumgray Dark</div>
+            <div class="col-xs-2 b-mediumgray-light example">Mediumgray Light</div>
+            <div class="col-xs-2 b-darkgray-dark example f-white">Darkgray Dark</div>
+            <div class="col-xs-2 b-darkgray-light example">Darkgray Light</div>
+        </div>
+        <div class="row hide">
+            <pre>
+                <code class="html">
+                    &lt;div class="b-blue-dark"&gt;Blue Dark&lt;/div&gt;
+                    &lt;div class="b-blue-light"&gt;Blue Light&lt;/div&gt;
+                    &lt;div class="b-aqua-dark"&gt;Aqua Dark&lt;/div&gt;
+                    &lt;div class="b-aqua-light"&gt;Aqua Light&lt;/div&gt;
+                    &lt;div class="b-mint-dark"&gt;Mint Dark&lt;/div&gt;
+                    &lt;div class="b-mint-light"&gt;Mint Light&lt;/div&gt;
+                    &lt;div class="b-grass-dark"&gt;Grass Dark&lt;/div&gt;
+                    &lt;div class="b-grass-light"&gt;Grass Light&lt;/div&gt;
+                    &lt;div class="b-sunflower-dark"&gt;Sunflower Dark&lt;/div&gt;
+                    &lt;div class="b-sunflower-light"&gt;Sunflower Light&lt;/div&gt;
+                    &lt;div class="b-bittersweet-dark"&gt;Bittersweet Dark&lt;/div&gt;
+                    &lt;div class="b-bittersweet-light"&gt;Bittersweet Light&lt;/div&gt;
+                    &lt;div class="b-grapefruit-dark"&gt;Grapefruit Dark&lt;/div&gt;
+                    &lt;div class="b-grapefruit-light"&gt;Grapefruit Light&lt;/div&gt;
+                    &lt;div class="b-lavender-dark"&gt;Lavender Dark&lt;/div&gt;
+                    &lt;div class="b-lavender-light"&gt;Lavender Light&lt;/div&gt;
+                    &lt;div class="b-pinkrose-dark"&gt;Pinkrose Dark&lt;/div&gt;
+                    &lt;div class="b-pinkrose-light"&gt;Pinkrose Light&lt;/div&gt;
+                    &lt;div class="b-lightgray-dark"&gt;Lightgray Dark&lt;/div&gt;
+                    &lt;div class="b-lightgray-light"&gt;Lightgray Light&lt;/div&gt;
+                    &lt;div class="b-mediumgray-dark"&gt;Mediumgray Dark&lt;/div&gt;
+                    &lt;div class="b-mediumgray-light"&gt;Mediumgray Light&lt;/div&gt;
+                    &lt;div class="b-darkgray-dark"&gt;Darkgray Dark&lt;/div&gt;
+                    &lt;div class="b-darkgray-light"&gt;Darkgray Light&lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row pb-20">
+            <p class="txt-c f-white f-20 pos-r">
+                Rectangular Types of Buttons
+                <a href="#" class="btn pos right show_code"><i class="fa fa-code"></i>&nbsp;code</a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 txt-c"><button class="btn-default">Button Default</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-primary">Button Primary</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-info">Button Info</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-success">Button Success</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-warning">Button Warning</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-danger">Buuton Danger</button></div>
+        </div>
+        <div class="row hide">
+            <pre>
+                <code class="html">
+                    &lt;button&gt;Button Default&lt;/button&gt;
+                    &lt;button class="btn-primary"&gt;Button Primary&lt;/button&gt;
+                    &lt;button class="btn-info"&gt;Button Info&lt;/button&gt;
+                    &lt;button class="btn-success"&gt;Button Success&lt;/button&gt;
+                    &lt;button class="btn-warning"&gt;Button Warning&lt;/button&gt;
+                    &lt;button class="btn-danger"&gt;Buuton Danger&lt;/button&gt;
+                </code>
+            </pre>
+        </div>
+        <div class="row pb-20">
+            <p class="txt-c f-white f-20 pos-r">
+                Rounded Types of Buttons
+                <a href="#" class="btn pos right show_code"><i class="fa fa-code"></i>&nbsp;code</a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 txt-c"><button class="btn-default btn-radius">Button Default</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-primary btn-radius">Button Primary</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-info btn-radius">Button Info</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-success btn-radius">Button Success</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-warning btn-radius">Button Warning</button></div>
+            <div class="col-xs-2 txt-c"><button class="btn-danger btn-radius">Buuton Danger</button></div>
+        </div>
+        <div class="row hide">
+            <pre>
+                <code class="html">
+                    &lt;button class="btn-radius"&gt;Button Default&lt;/button&gt;
+                    &lt;button class="btn-radius btn-primary"&gt;Button Primary&lt;/button&gt;
+                    &lt;button class="btn-radius btn-info"&gt;Button Info&lt;/button&gt;
+                    &lt;button class="btn-radius btn-success"&gt;Button Success&lt;/button&gt;
+                    &lt;button class="btn-radius btn-warning"&gt;Button Warning&lt;/button&gt;
+                    &lt;button class="btn-radius btn-danger"&gt;Buuton Danger&lt;/button&gt;
+                </code>
+            </pre>
+        </div>
+        <div class="row">
+            <p class="txt-c f-white f-20 pos-r">
+                Note: For Custom Button Colours add background color classes directly to button tag
+            </p>
+            <pre>
+                <code class="html">
+                    &lt;button class="b-lavender-light"&gt;Button Primary&lt;/button&gt;
+                </code>
+            </pre>
+        </div>
+        <div class="row pb-20">
+            <p class="txt-c f-white f-20 pos-r">
+                Rectangular Types of Buttons without Background Colours
+                <a href="#" class="btn pos right show_code"><i class="fa fa-code"></i>&nbsp;code</a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-default">Button Default</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-primary">Button Primary</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-info">Button Info</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-success">Button Success</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-warning">Button Warning</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-danger">Buuton Danger</button></div>
+        </div>
+        <div class="row hide">
+            <pre>
+                <code class="html">
+                    &lt;button class="bdr-btn-default"&gt;Button Default&lt;/button&gt;
+                    &lt;button class="bdr-btn-primary"&gt;Button Primary&lt;/button&gt;
+                    &lt;button class="bdr-btn-info"&gt;Button Info&lt;/button&gt;
+                    &lt;button class="bdr-btn-success"&gt;Button Success&lt;/button&gt;
+                    &lt;button class="bdr-btn-warning"&gt;Button Warning&lt;/button&gt;
+                    &lt;button class="bdr-btn-danger"&gt;Buuton Danger&lt;/button&gt;
+                </code>
+            </pre>
+        </div>
+        <div class="row pb-20">
+            <p class="txt-c f-white f-20 pos-r">
+                Rounded Types of Buttons without Background Colours
+                <a href="#" class="btn pos right show_code"><i class="fa fa-code"></i>&nbsp;code</a>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 txt-c"><button class="btn-radius bdr-btn-default ">Button Default</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-primary btn-radius">Button Primary</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-info btn-radius">Button Info</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-success btn-radius">Button Success</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-warning btn-radius">Button Warning</button></div>
+            <div class="col-xs-2 txt-c"><button class="bdr-btn-danger btn-radius">Buuton Danger</button></div>
+        </div>
+        <div class="row hide">
+            <pre>
+                <code class="html">
+                    &lt;button class="btn-radius bdr-btn-default"&gt;Button Default&lt;/button&gt;
+                    &lt;button class="btn-radius bdr-btn-primary"&gt;Button Primary&lt;/button&gt;
+                    &lt;button class="btn-radius bdr-btn-info"&gt;Button Info&lt;/button&gt;
+                    &lt;button class="btn-radius bdr-btn-success"&gt;Button Success&lt;/button&gt;
+                    &lt;button class="btn-radius bdr-btn-warning"&gt;Button Warning&lt;/button&gt;
+                    &lt;button class="btn-radius bdr-btn-danger"&gt;Buuton Danger&lt;/button&gt;
+                </code>
+            </pre>
+        </div>
+        <div class="row">
+            <p class="txt-c f-white f-20 pos-r">
+                Note: For Custom Button Colours add border color classes directly to button tag
+            </p>
+            <pre>
+                <code class="html">
+                    &lt;button class="bdr-lavender-light"&gt;Button Primary&lt;/button&gt;
+                </code>
+            </pre>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="example-title">Typography</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="example-typography">
+                    <h1><span class="heading-note">Header 1</span>Showers across the W</h1>
+                </div>
+                <div class="example-typography">
+                    <h2><span class="heading-note">Header 2</span>Give this quartet a few</h2>
+                </div>
+                <div class="example-typography">
+                    <h3><span class="heading-note">Header 3</span>The Vatican transitions to a</h3>
+                </div>
+                <div class="example-typography">
+                    <h4><span class="heading-note">Header 4</span>Great American Bites: Telluride's Oak, The</h4>
+                </div>
+                <div class="example-typography">
+                    <h5><span class="heading-note">Header 5</span>Author Diane Alberts loves her some good</h5>
+                </div>
+                <div class="example-typography">
+                    <h6><span class="heading-note">Header 6</span>With the success of young-adult book-to-movie</h6>
+                </div>
+                <div class="example-typography"><span class="text-note">Paragraph</span>
+                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <strong>Donec ullamcorper</strong> nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                </div>
+                <div class="example-typography">
+                    <span class="text-note">Image</span> 
+                    <img src="images/slider1.jpg" alt="exaple-image" class="img-rounded img-responsive">
+                    <p class="img-comment"><strong>Note:</strong> gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                </div>
+                <div class="example-typography"><span class="text-note">Lead Text</span>
+                    <p class="lead">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                </div>
+                <div class="example-typography"><span class="text-note">Quote</span>
+                    <blockquote>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus.</p><small>Steve Jobs, CEO Apple</small>
+                    </blockquote>
+                </div>
+                <div class="example-typography"><span class="text-note">Small Font</span>
+                    <p>
+                        <small class="f-12">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="example-title">Forms</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control" placeholder="Text input" type="text">
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" disabled="" placeholder="Text input" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon b-lightgray-dark">$</span>
+                                    <input class="form-control" type="text"> 
+                                    <span class="input-group-addon b-lightgray-dark">.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-search search-only pos-r">
+                            <i class="search-icon fa fa-search"></i>
+                            <input class="form-control search-query btn-radius" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group form-search">
+                            <input class="form-control search-query" type="text"> <span class="input-group-btn"><button type="submit" class="btn btn-primary" data-type="last">Search</button></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: [ 'Lato:100,300,400,700,900:latin' ] }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();     
+
+        var obj,
+            objs = document.querySelectorAll(".show_code");
+        for (var i = 0; i < objs.length; i++) {
+            obj = objs[i];
+            obj.addEventListener('click', function (el) {
+                el.preventDefault();
+                var $siblings = el.target.parentElement.parentElement.nextElementSibling;
+                if ($siblings.nextElementSibling.className.match(/\bhide\b/)) {
+                    $siblings.className += " hide";
+                    $siblings.nextElementSibling.classList.remove("hide");
+                }
+                else {
+                    $siblings.classList.remove("hide")
+                    $siblings.nextElementSibling.className += " hide";
+                }
+                
+            },false);
+        };
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script defer>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

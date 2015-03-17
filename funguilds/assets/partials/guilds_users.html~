@@ -1,0 +1,20 @@
+<div class="modal-header  pos-r" >
+	<div class="row mt-20 mb-20">
+		<div class="heading dark">
+			<h3>Add Games</h3>
+		</div>
+	</div>
+	<i class="fa fa-times pop-close csr-pointer" ng-click="cancel()"></i>
+</div>
+<div class="row">
+	<div class="col-xs-2" ng-repeat="game in sys_games">
+		<div class="games clearfix" ng-click="game_add(game.id)">
+			<div class="game--img">
+				<img src="http://lorempixel.com/400/500/" class="">
+			</div>
+			<div class="game--details">
+				<h5 class="f-16 pt-5 pb-5 f-darkgray-dark f-12">{[game.name]}</h5>
+			</div>
+		</div>
+	</div>
+</div>

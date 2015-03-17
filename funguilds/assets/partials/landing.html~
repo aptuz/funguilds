@@ -1,0 +1,6 @@
+<div class="container-f pt-35">
+	<div class="row pt-35 txt-c">
+		<h1 class="f-72 f-lightgray-dark">FUN GUILDS</h1><br>
+		<a href="/login/" class="btn b-lightgray-dark f-darkgray-dark" target="_self">Login</a>
+	</div>
+</div>

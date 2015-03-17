@@ -1,0 +1,9 @@
+
+
+
+def GetNextId():
+    next=NextId.objects.get(source='games')
+    return_stmt=next.next_id
+    next.next_id=return_stmt+1
+    next.save()
+    return return_stmt

@@ -1,0 +1,54 @@
+table {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+	padding: 16px;
+}
+
+td {
+    padding: 16px;
+}
+
+form {
+	padding: 0;
+	margin: 0;
+}
+
+.dot {
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.lineh {
+    background-color: #ffffff;
+}
+
+.linev {
+    background-color: #ffffff;
+}
+
+.score {
+    margin-left: 20px;
+	margin-right: 20px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.turn {
+    background-image: url('../images/turn.gif');
+    width: 14px;
+    height: 13px;
+    display: none;
+    margin-right: 12px;
+}
+
+span.colorbox {
+	width: 10px;
+	height: 10px;
+    display: inline-block;
+	border-radius: 10px;
+	background-color: #F622DD;
+}

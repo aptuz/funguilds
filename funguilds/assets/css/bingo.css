@@ -1,0 +1,208 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/*body {
+	background-color: #a1a1a1;
+	background-image: url('../img/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "BodoniSvtyTwoOSITCTT-Bold", "Georgia", serif;
+	text-rendering: optimizeLegibility;
+}*/
+
+#container {
+	width: 550px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: none;
+}	
+
+#header, #footer {
+	display: block;
+	float: left;
+	width: 600px;
+	color: #8B3E2F;
+	opacity: 0.5;
+	text-shadow: 0px 1px 0px #e1e1e1, 0px -1px 0px #313131;
+   	background-color: none;
+	font-size: 2.8em;
+	font-weight: bold;
+	padding: 8px 20px 8px 20px;
+	transition-property: background-color;
+	transition-duration: 1s;
+	-moz-transition-property: background-color;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: background-color;
+	-webkit-transition-duration: 1s;
+}
+
+#footer {
+	text-align: center;
+	font-size: 1.4em;
+	padding: 3px 20px;
+	margin-bottom: 80px;
+}
+
+
+#board {
+	display: block;
+	min-width: 472px;
+	background-color: #fff;
+	margin-bottom: 10px;
+	box-shadow: 0px 3px #919191;
+	width: 35%;
+}
+
+.square,.gray {
+	display: block;
+	float: left;
+	overflow: hidden;
+	background-color: #fff;
+	color: #313131;
+	text-align: center;
+	width: 90px;
+	height: 90px;
+	padding: 3px;
+	border: 7px solid #d1d1d1;
+	transition-property: background-color;
+	transition-duration: 1s;
+	-moz-transition-property: background-color;
+	-moz-transition-duration: 1s;
+	-webkit-transition-property: background-color;
+	-webkit-transition-duration: 1s;
+}
+
+.selected {
+	color: #f1f1f1;
+	background-color: #313131;
+}
+
+.text {
+	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", Arial, sans-serif;
+	vertical-align: middle;
+	font-size: 1.2em;
+	line-height: 1.2em;
+}
+
+.small {
+	font-size: 0.8em;
+}
+
+.medium {
+	font-size: 1.0em;
+}
+
+.large {
+	font-size: 1.2em;
+}
+
+.win {
+	color: #ffffff !important;
+   	background-color: red;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+
+	#container {
+		width: 640;
+		margin: -7px 0px 0px -7px;
+	}
+
+	#header {
+		font-size: 3.6em;
+		text-align: center;
+		padding: 20px 20px 12px 20px;
+	}
+	
+	#footer {	
+		padding: 16px 20px 8px 20px;
+		font-size: 2.0em;
+	}
+
+	.text {
+		font-size: 1.2em;
+		line-height: 1.2em;
+	}
+}
+
+.bingo_game{
+	background-image: url("../images/bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position:-3% 48%;
+}
+
+.user1-box, .user2-box{
+	min-height: 455px;
+	/*border:1px solid #222;*/
+	background-color: rgba(39, 30, 30, 0.29);
+	border-radius: 2px;
+	box-shadow: 0px 0px 2px #000;
+}
+
+.user-heading{
+	background: #333;
+  border-radius: 30px;
+  padding-left: 0px;
+  height: 40px;
+  padding-top: 6px;
+  text-align: center;
+  margin-top: 10px;
+}
+.user1-box{
+	margin-right: 40px;
+}
+
+.user2-box{
+	margin-left: 40px;
+}
+
+.bingo-title{
+	background-color: rgb(123, 122, 121);
+  height: 48px;
+  display: inline-block;
+  width: 50px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 18px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  left: 44%;
+}
+
+.bingo-title.active{
+	background-color: orange;
+}
+
+.bingo-user1, .bingo-user2{
+	height: 120px;
+	width: 120px;
+	background-color: #333;
+	border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	left: 10%;
+	text-align: center;
+	padding-top: 40px;
+	font-size: 25px;
+}
+
+.bingo-user1.active, .bingo-user2.active,
+.bg-user1.active, .bg-user2.active{
+
+background-color: orange;
+}
+

@@ -1,0 +1,39 @@
+{% load static %}
+<!-- External scripts -->
+    <script type="text/javascript" src="{% static "scripts/ext/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/angular.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/angular-route.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/angular-resource.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/angular-cookies.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/xeditable.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/ui-bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/angular-animate.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/angular-sanitize.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/angular-growl.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/moment.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "scripts/ext/ws4redis.js" %}"></script>
+     
+<!-- External scripts end -->
+
+<!-- scripts -->
+<script type="text/javascript" src="{% static "scripts/app.js"%}"></script>
+<script type="text/javascript" src="{% static "scripts/base.js"%}"></script>
+<!-- scripts end -->
+<!-- Configuraiton -->
+<script>
+    mainApp.constant("djangoConstants", {
+        'csrfToken' : "{{csrf_token}}",
+        'userSiteObj' : (function(){
+            var data = {
+                username: '{{user.username}}',
+                pk: '{{user.pk}}',
+                is_superuser: '{{user.is_superuser}}',
+            };
+            return data;
+        })(),
+        'staticLink' : "{% static ""%}",
+        'webSocketURI' : '{{ WEBSOCKET_URI }}',
+        'heartBeatMessage' : {{ WS4REDIS_HEARTBEAT }},
+    });        
+</script>
+<!-- Configuration END -->

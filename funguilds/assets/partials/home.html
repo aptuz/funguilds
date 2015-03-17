@@ -1,0 +1,110 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9" ng-if="ownedGuilds.length > 0">
+			<div class="row mt-20 mb-20">
+				<div class="heading">
+					<h3>My Guilds</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3" ng-repeat="owned in ownedGuilds">
+					<a href="/guild_detail/{[owned.pk]}">
+						<div class="guilds clearfix">
+							<div class="guild--img">
+								<img src="http://lorempixel.com/400/500/" class="">
+							</div>
+							<div class="guild--details">
+								<h5 class="f-16 pt-5 pb-5 f-bittersweet-dark">{[owned.name]}</h5>
+								<div class="row p-2 mb-5">
+									<span class="f-mediumgray-dark f-14">{[owned.description]}</span>
+								</div>
+								<div class="row p-2">
+									<div class="pull-l">
+										<i class="fa fa-gamepad"></i>&nbsp;{[owned.no_of_games]}
+									</div>
+									<div class="pull-r">
+										<i class="fa fa-globe">&nbsp;</i><span class="f-mint-light">{[owned.no_of_active_members]}</span>/{[owned.no_of_members]}
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-9" ng-if="joinedGuilds.length > 0">
+			<div class="row mt-20 mb-20">
+				<div class="heading">
+					<h3>Joined Guilds</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3" ng-repeat="joined in joinedGuilds">
+					<a href="/guild_detail/{[joined.pk]}">
+						<div class="guilds clearfix">
+							<div class="guild--img">
+								<img src="http://lorempixel.com/400/500/" class="">
+							</div>
+							<div class="guild--details">
+								<h5 class="f-16 pt-5 pb-5 f-bittersweet-dark">{[joined.name]}</h5>
+								<div class="row p-2 mb-5">
+									<span class="f-mediumgray-dark f-14">{[joined.description]}</span>
+								</div>
+								<div class="row p-2">
+									<div class="pull-l">
+										<i class="fa fa-gamepad"></i>&nbsp;{[joined.no_of_games]}
+									</div>
+									<div class="pull-r">
+										<i class="fa fa-globe">&nbsp;</i><span class="f-mint-light">{[joined.no_of_active_members]}</span>/{[joined.no_of_members]}
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			<!-- <div class="row mt-20 mb-20">
+				<div class="heading">
+					<h3>Recent Activities</h3>
+				</div>
+			</div> -->
+			<div class="row"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12" ng-if="openGuilds.length > 0">
+			<div class="row mt-20 mb-20">
+				<div class="heading">
+					<h3>Public Guilds</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2" ng-repeat="open in openGuilds" ng-if="user_id !== open.created_by">
+					<a href="/guild_detail/{[open.pk]}">
+						<div class="guilds clearfix">
+							<div class="guild--img">
+								<img src="http://lorempixel.com/400/500/" class="">
+							</div>
+							<div class="guild--details">
+								<h5 class="f-16 pt-5 pb-5 f-bittersweet-dark">{[open.name]}</h5>
+								<div class="row p-2 mb-5">
+									<span class="f-mediumgray-dark f-14">{[open.description]}</span>
+								</div>
+								<div class="row p-2">
+									<div class="pull-l">
+										<i class="fa fa-gamepad"></i>&nbsp;{[open.no_of_games]}
+									</div>
+									<div class="pull-r">
+										<i class="fa fa-globe">&nbsp;</i><span class="f-mint-light">{[open.no_of_active_members]}</span>/{[open.no_of_members]}
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

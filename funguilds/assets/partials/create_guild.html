@@ -1,0 +1,21 @@
+<div class="modal-header  pos-r" >
+	<div class="row mt-20 mb-20">
+		<div class="heading dark">
+			<h3>Create Guild</h3>
+		</div>
+	</div>
+	<i class="fa fa-times pop-close csr-pointer" ng-click="cancel()"></i>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="row">
+            <input type="text" class="form-control full-w bdr-0 b-lightgray-dark" placeholder="Guild Name" ng-model="gname">
+        </div>
+        <div class="row">
+        	<textarea ng-model="gdesc" class="form-control full-w bdr-0 b-lightgray-dark" style="height:80px;resize:none;" placeholder="Guild Description"></textarea>
+        </div>
+        <div class="row">
+            <button class="btn b-darkgray-dark f-white pull-r col-sm-3" ng-click="guild_create($event, gname, gdesc)">Create</button>
+        </div>
+	</div>
+</div>

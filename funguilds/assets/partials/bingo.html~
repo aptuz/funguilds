@@ -1,0 +1,15 @@
+
+<input type="button" value="Request for Game" ng-click="requestBingo()" />
+<input type="button" value="Start Game" ng-click="startBingo()" />
+<br/>
+<input type="button" value="Stop Game" ng-click="stopBingo()" />
+<br/>
+<div id="container">
+
+	<div id="header"></div>
+	
+	<div id="board"></div>
+
+	<div id="footer"></div>
+
+</div>

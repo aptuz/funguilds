@@ -1,0 +1,106 @@
+{% extends "game_base.html" %}
+{% block extracss %}
+<style type="text/css">
+	.dot{
+		display: inline-block;
+		height: 15px;
+		width: 15px;
+		background-color: #FAFAFA;
+		border-radius: 50%;
+		margin-left: 5px;
+		margin-right: 5px;
+		-user-select:none;
+	}
+
+	.hl{
+		display: inline-block;
+		width: 50px;
+		height: 5px;
+		
+		margin-bottom: 3px;
+	}
+
+	.hl:hover{
+		cursor: pointer;
+		border-bottom: 2px dashed #fff;
+	}
+
+	.vl:hover{
+		cursor: pointer;
+		border-left: 2px dashed #FFF;
+	}
+
+	.vl{
+		display: inline-block;
+		width: 5px;
+		height: 50px;
+		/*background-color: red;*/
+		margin-left: 10px;
+  		margin-right: 10px;
+  		margin-bottom: 2px;
+  		-webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;       
+	}
+
+	.box{
+		display: inline-block;
+		height: 50px;
+		width: 50px;
+		/*background-color: yellow;*/
+		-webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;       
+	}
+
+	.hl.active, .vl.active{
+		background-color: #FFF;
+	}
+
+	.activered{
+		background-color: white !important;
+		border:none !important;
+	}
+
+	.activeblue{
+		background-color: blue !important;
+		border:none !important;
+	}
+
+	#game_area{
+		position: absolute;
+		margin: auto;
+		width: auto;
+		min-width: 400px;
+		display: inline-block;
+	}
+
+	*{
+		-webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;       
+	}
+
+
+</style>
+
+{% endblock %}
+
+{% block mainContent %}
+
+<div id="game_area">
+<h1 style="color:white">Press Enter </h1>
+</div>
+{% endblock %}

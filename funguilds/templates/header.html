@@ -1,0 +1,43 @@
+{% if user.is_authenticated %}
+<div class="row b-mint-dark profile-wrap">
+	<div class="row txt-r">
+		<div class="dropdown-handler mr-20" dropdown>
+			<h5 class="dropdown-handler--name">{[username]}&nbsp;<i class="fa fa-caret-down"></i></h5>
+			<ul class="dropdown-list hide">
+				<li ng-click="create_guild()">
+					<i class="fa fa-sign-out"></i>&nbsp;Create Guild
+				</li>
+				<li>
+					<a href="/logout/" target="_self"><i class="fa fa-sign-out"></i>&nbsp;logout</a>
+				</li>
+			</ul>
+		</div>	
+		<div class="noty-handler mr-20">
+			<div class="noty-wrap pos-r" dropdownnoty>
+				<i class="fa fa-bell f-20 g-darkgray-light"></i>
+				<span class="count b-bittersweet-dark f-12 p-2" ng-if="noty.length > 0"></span>
+			</div>
+			<div class="noty-req-wrap hide">
+				<div class="row b-darkgray-light">
+					<h4 class="txt-l pl-10">Game Request</h4>
+				</div>
+				<div class="noty--rep p-10" ng-if="noty.length > 0" ng-repeat="notys in noty">
+				 	<div class="noty-msg b-lightgray-dark pt-5 pb-5">
+				 		<p class="f-darkgray-dark pl-5">
+				 			<span class="f-bittersweet-dark">{[notys.userName]}</span> is requesting you to play <span class="f-bittersweet-dark">{[notys.gameName]}</span> with you?
+				 		</p>
+				 		<div class="row p-0 txt-r">
+				 			<button class="btn-radius bdr-mint-dark" ng-click="accept_req(notys,$index)">
+				 				<i class="fa fa-check"></i>
+				 			</button>
+                    		<button class="btn-radius bdr-btn-danger">
+								<i class="fa fa-times"></i>
+                    		</button>
+				 		</div>
+				 	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}

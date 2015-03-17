@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp" ng-csp>
+<head>
+	<title>Fun Guilds</title>
+	{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+    <link href="{% static "css/bingo.css" %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}" />
+    {% endblock %}
+
+    {% block extracss %}
+    {% endblock %}
+</head>
+<body ng-controller="mainController" class="home">
+    <div class="base" ng-controller="baseController">
+        <!-- Header -->
+        {% block header %}
+            {% include "header.html" %}
+        {% endblock %}
+        <!-- Header END -->
+        <!-- Main Content -->
+        {% block mainContent %}
+            <div class="maincontent" ng-view autoscroll="true"></div>
+        {% endblock %}
+        <!-- Main Content END -->
+        <!-- Footer -->
+        {% include "footer.html" %}
+        <!-- Footer END -->
+    </div>
+    <!-- Loading Symbol -->
+   
+    <!-- Load Symbol END -->
+</body>
+{% include "scripts.html" %}
+</html>

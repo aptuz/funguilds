@@ -1,0 +1,329 @@
+body{
+    background-color: #434a54;
+    color: #f5f7fa;
+}
+.bdr-0{
+    border-width: 0;
+}
+.csr-p{
+    cursor: pointer;
+}
+.dropdown-handler,.noty-handler{
+	cursor: pointer;
+	position: relative;
+	float: right;
+}
+.dropdown-list{
+	display: block;
+	width: 150px;
+	position: absolute;
+	top: 25px;
+	right: -10px;
+	background-color: #f5f7fa;
+	z-index: 10;
+}
+.dropdown-list li{
+	display: block;
+	padding: 10px;
+}
+.dropdown-list li a,.dropdown-list li{
+	display: block;
+	color: #434a54;
+	text-align: left;
+}
+.dropdown-list:after,.noty-req-wrap:after{
+	font: normal normal normal 1.125em/1 FontAwesome;
+	content: "\f0d8";
+	position: absolute;
+	top: -12px;
+	right:10px;
+}
+.noty-req-wrap:after{
+	color: #656d78;
+	right: 3px;
+}
+.count{
+	position: absolute;
+	top: -12px;
+	left: 12px;
+}
+.noty-req-wrap{
+	background-color: #f5f7fa;
+	position: absolute;
+	top: 38px;
+	right: 0;
+	width: 300px;
+	min-height: 50px;
+	max-height: 400px;
+	z-index: 10;
+}
+.noty-msg{
+	font-weight: 600;
+	text-align: left;
+}
+.profile--img{
+	position: relative;
+	width: 180px;
+	height: 180px;
+	margin-right: 35px;
+	overflow: hidden;
+	-webkit-border-radius: 125px;
+	-moz-border-radius: 125px;
+	border-radius: 125px;
+	text-align: center;
+	background: #FFF;
+	float: left;
+}
+.profile--img img{
+	display: block;
+	width: 100%;
+	z-index: 10;
+}
+.guilds{
+	background-color: rgba(11, 11, 11, 0.3);
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.games{
+	cursor: pointer;
+	background-color: rgba(11, 11, 11, 0.3);
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.guild--img,.game--img{
+	position: relative;
+	width: 100%;
+	height: 180px;
+	overflow: hidden;
+	text-align: center;
+	background: #FFF;
+	float: left;
+}
+.game--img{
+	height: 70px;
+}
+.guild--details{
+	padding: 5px 5px 0px;
+	float: left;
+	width: 100%;
+}
+.guild--details h5,.guild-requests{
+	font-weight: 600;
+}
+.bold{
+	font-weight: 600
+}
+.heading{
+	position: relative;
+	height: 1px;
+	width: 100%;
+	background-color: #f5f7fa;
+}
+.heading.dark{
+	background-color: #434a54;
+}
+.heading h3{
+	background-color: #f5f7fa;
+	color: #434a54;
+	padding: 5px 15px;
+	font-size: 1.5em;
+	position: absolute;
+	top:-15px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+.heading.dark h3{
+	background-color: #434a54;
+	color: #f5f7fa;
+}
+.heading h3:after,.heading h3:before{
+	background-color: #f5f7fa;
+	content: "";
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	top: 5px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.heading h3:after{
+	left: -11px;
+}
+.heading h3:before{
+	right: -11px;
+}
+.heading.dark h3:before,.heading.dark h3:after{
+	background-color: #434a54;
+}
+/** modal **/
+.modal-open {
+  	overflow: hidden;
+}
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	overflow: hidden;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+}
+.modal.fade .modal-dialog {
+  	-webkit-transition: -webkit-transform,opacity .5s ease-out;
+       	 -o-transition:      -o-transform,opacity .5s ease-out;
+          	transition:         transform,opacity .5s ease-out;
+  	-webkit-transform: translate3d(0, -40px, 0);
+          	transform: translate3d(0, -40px, 0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	opacity: 0;
+}
+.modal.in .modal-dialog {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
+  	-webkit-transform: translate3d(0, 0, 0);
+          	transform: translate3d(0, 0, 0);
+}
+.modal-open .modal {
+  	overflow-x: hidden;
+  	overflow-y: auto;
+}
+.modal-dialog {
+  	position: relative;
+  	width: auto;
+  	margin: 10px;
+}
+.modal-content {
+  	position: relative;
+  	background-color: #f5f7fa;
+  	-webkit-background-clip: padding-box;
+          	background-clip: padding-box;
+  	border: 1px solid #999;
+  	border: 1px solid rgba(0, 0, 0, .2);
+  	border-radius: 2px;
+  	outline: 0;
+}
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1040;
+	background-color: #000;
+}
+.modal-backdrop.fade {
+  	filter: alpha(opacity=0);
+  	opacity: 0;
+}
+.modal-backdrop.in {
+  	filter: alpha(opacity=50);
+  	opacity: .5;
+}
+.modal-header {
+  	min-height: 16.42857143px;
+  	padding: 10px 10px 10px 20px;
+  	border-bottom: 1px solid #e5e5e5;
+}
+.modal-header .close {
+  	margin-top: -2px;
+}
+.modal-title {
+  	margin: 0;
+  	line-height: 1.42857143;
+  	font-size: 1.25em;
+}
+.modal-body {
+	width: 90%;
+  	position: relative;
+  	margin : 10px auto;
+  	background-color : #fff;
+  	border-radius : 2px;
+}
+.modal-body:after{
+	content: " ";
+	display: table;
+	clear: both;
+}
+.modal-footer {
+	padding: 10px;
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+}
+.modal-footer .btn + .btn {
+	margin-bottom: 0;
+	margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+	margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+ 	margin-left: 0;
+}
+.modal-scrollbar-measure {
+	position: absolute;
+	top: -9999px;
+	width: 50px;
+	height: 50px;
+	overflow: scroll;
+}
+.pop-close{
+	cursor: pointer;
+	position: absolute;
+	right: -25px;
+	top: 0;
+	font-size: 2em;
+}
+@media (min-width: 768px) {
+	.modal-dialog {
+		width: 600px;
+		margin: 30px auto;
+	}
+	.modal-sm {
+		width: 300px;
+	}
+}
+@media (min-width: 992px) {
+  	.modal-lg {
+    	width: 900px;
+  	}
+}
+
+
+/** guild_detail page **/
+
+.guild_header{
+	position: relative;
+	height: 250px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.guild_header .row{
+	width: 100%;
+	background-color: #f5f7fa;
+	position: absolute;
+	bottom: 0;
+	left: 0
+}
+
+.guild_games{
+	min-height: 400px;
+	background-color: #333;
+}
+
+.guild_members{
+	min-height: 400px;
+	background-color: #444;
+}
+
+/** end guild_detail **/

@@ -1,0 +1,37 @@
+	<div class="centered">
+		<div class="turn" id="turnu1"></div><strong style="color: #0000FF;">User 1:</strong><span class="score" id="u1score">0</span>
+		<div class="turn" id="turnu2"></div><strong style="color: #ff0000;">User 2:</strong><span class="score" id="u2score">0</span>
+		<div style="display: block; margin-top: 10px;">Who begins the game?
+		<input checked="checked" type="radio" name="firstuser" id="user1" value="1" onclick="newgame();" />
+		<label for="user1">User 1</label>&nbsp; or  
+		<input type="radio" name="firstuser" id="user2" value="2" onclick="newgame();" />
+		<label for="user2">User 2</label></div>
+		<div style="display: inline-block; margin-top: 10px;">Table Size- Row's: 
+        <select id="id_rows" style="width:40px">
+			<option value="3" selected="selected">3</option>
+			<option value="4" >4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+            <option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+		</select> Vs Column's 
+        <select id="id_cols" style="width:40px">
+			<option value="3" selected="selected">3</option>
+			<option value="4" >4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+            <option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+		</select>
+		<button type="button" id="resetgame" onclick="newgame();"><strong>New Game</strong></button></div>
+	</div>
+    <br>
+    <br>
+    <br>
+    <input type="hidden" id="regenerate_data" value="">
+    <input type="hidden" id="userid" value="user1">
+	<form id="noghtekhat" action="">
+		<table id="gametable"></table>
+	</form>
