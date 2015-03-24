@@ -125,10 +125,10 @@ body{
 .heading h3{
 	background-color: #f5f7fa;
 	color: #434a54;
-	padding: 5px 15px;
+	padding: 8px 20px;
 	font-size: 1.5em;
 	position: absolute;
-	top:-15px;
+	top:-17px;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
@@ -143,8 +143,8 @@ body{
 .heading h3:after,.heading h3:before{
 	background-color: #f5f7fa;
 	content: "";
-	width: 22px;
-	height: 22px;
+	width: 26px;
+	height: 26px;
 	position: absolute;
 	top: 5px;
 	-webkit-transform: rotate(45deg);
@@ -154,10 +154,10 @@ body{
 	transform: rotate(45deg);
 }
 .heading h3:after{
-	left: -11px;
+	left: -13px;
 }
 .heading h3:before{
-	right: -11px;
+	right: -13px;
 }
 .heading.dark h3:before,.heading.dark h3:after{
 	background-color: #434a54;

@@ -32,22 +32,8 @@ mainApp.filter('range', function() {
 mainApp.controller('baseController',['$scope','Constants','$location','growl','$http','$timeout', '$modal', 'loadTemplate', '$routeParams',
     function($scope,Constants,$location,growl,$http,$timeout,$modal,loadTemplate,$routeParams){        
         $scope.username = Constants.get("userSiteObj")['username'];
+        $scope.is_super = Constants.get("userSiteObj")['is_superuser'];
 		$scope.requestGame = function(game){
-            /*var user = parseInt(window.prompt("Enter User PK"));
-            var options = {
-                'method': 'GET',
-                'url': '/games/request_game/',
-                'params': {
-                    'user': user,
-                    'requestee': Constants.get('userSiteObj').pk,
-                    'game': game
-                }
-            };
-            $http(options).success(function (data) {
-
-            }).error(function(data){
-                alert('error');
-            }); */
             var modalInstance = $modal.open({
                 templateUrl: loadTemplate(Constants.get('staticLink'),Constants.get('templateDir'),'guilds_users.html'),
                 backdrop: true,
@@ -220,6 +206,48 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
                 // $log.info('Modal dismissed at: ' + new Date());
             });
         };
+
+        $scope.create_game = function () {
+            var modalInstance = $modal.open({
+                templateUrl: loadTemplate(Constants.get('staticLink'),Constants.get('templateDir'),'create_guild.html'),
+                backdrop: true,
+                controller: function ($scope, $modalInstance, $http, transformRequestAsFormPost, user_id) {
+                    $scope.cancel = function () {
+                        $modalInstance.dismiss('cancel');
+                    };
+                    
+                    $scope.guild_create = function ($event, gname, gdesc) {
+                        $event.target.setAttribute('disabled', 'disabled');
+                        var options = {
+                            'transformRequest': transformRequestAsFormPost,
+                            'method': 'POST',
+                            'url': '/webservices/api/1/games/',
+                            'data': {
+                                'name': gname,
+                                'description': gdesc,
+                                'created_by': parseInt(user_id)
+                            }
+                        };
+                        $http(options).success(function (data) {
+                            $modalInstance.close(data);
+                        }).error(function (data) {
+                            $event.target.removeAttribute('disabled');
+                        });
+                    };
+                },
+                size: 'md',
+                resolve: {
+                    'user_id' : function () {
+                        return Constants.get('userSiteObj')['pk'];
+                    }
+                }
+            });
+            modalInstance.result.then(function (data) {
+                
+            }, function () {
+                
+            });
+        };
 }]).directive('enter',function($document){
     return function(scope,elem,attrs){
         $("body").on('keyup',function(e) {
@@ -389,8 +417,8 @@ mainApp.controller('GuildDtlController',['$scope','Constants','$location','growl
                         };
                         
                         $http(options).success(function(data){
-                            
                             console.log(data);
+                            $modalInstance.dismiss('cancel');
                         }).error(function(data){
 
                         });
