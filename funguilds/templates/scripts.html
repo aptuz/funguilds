@@ -27,7 +27,7 @@
             var data = {
                 username: '{{user.username}}',
                 pk: '{{user.pk}}',
-                is_superuser: '{{user.is_superuser}}',
+                is_superuser: '{{user.is_superuser}}' === 'True'? true:false,
             };
             return data;
         })(),
