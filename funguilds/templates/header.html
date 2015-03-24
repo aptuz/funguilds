@@ -4,8 +4,11 @@
 		<div class="dropdown-handler mr-20" dropdown>
 			<h5 class="dropdown-handler--name">{[username]}&nbsp;<i class="fa fa-caret-down"></i></h5>
 			<ul class="dropdown-list hide">
+				<li ng-click="create_game()" ng-if="is_super">
+					<i class="fa fa-gamepad"></i>&nbsp;Create Game
+				</li>
 				<li ng-click="create_guild()">
-					<i class="fa fa-sign-out"></i>&nbsp;Create Guild
+					<i class="fa fa-users"></i>&nbsp;Create Guild
 				</li>
 				<li>
 					<a href="/logout/" target="_self"><i class="fa fa-sign-out"></i>&nbsp;logout</a>
