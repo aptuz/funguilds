@@ -1,0 +1,113 @@
+
+#outerWrapper{
+	margin: 20px 0px 20px 100px;
+	padding: 0px;
+	width: 1058px;
+	}
+
+#centerWrapper{
+	float: left;
+	margin: 0px;	
+	background-color: #fff;
+	background-repeat: no-repeat;
+	width: 600px;
+	height: 600px;
+	}
+
+#rightWrapper{
+	float:right;
+	margin: 0px;
+    background-color: #fff;
+	color: #000;
+	width: 229px;
+	padding: 10px;
+	height: 600px;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	border-color:  #7C7C7C;
+	}	
+
+#leftWrapper{
+	float: left;
+	margin: 0px;
+    background-color: #fff;
+	color: #000;
+	width: 229px;
+	padding: 10px;
+	height: 600px;
+	border-width: 0px 0px 0px 1px;
+	border-style: solid;
+	border-color:  #7C7C7C;
+	}
+
+#leftWrapper form{
+	margin-top:100px;
+}
+
+#rightWrapper form{
+	margin-top:100px;
+}
+textarea{
+	border: 0px;
+	font-family: "Trebuchet MS", Arial, Helvetica, Ubuntu, sans serif;
+	font-size: 12pt;	
+	text-align: center;
+    background-color:white;
+	}
+
+#chipRed{
+	background-color: #f00;
+	color: #fff;
+	width: 15px;
+	height: 15px;
+	padding: 10px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border: 1px solid #000;
+	text-indent: -9999px;
+	z-index: 2;
+	float: left;
+	}
+	
+#chipBlue{
+	background-color: #00f;
+	color: #fff;
+	width: 15px;
+	height: 15px;
+	padding: 10px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border: 1px solid #000;
+	text-indent: -9999px;
+	z-index: 1;
+	float: left;
+	margin-left: 10px;
+	}
+
+img#firstdice1, img#seconddice1,{
+	cursor: hand;
+	}
+
+
+table{
+	width: 600px;
+	height: 600px;
+	padding: 0px;
+ 	margin: 0px;
+		background-image: url('../images/snl.png');
+	background-repeat: no-repeat;
+	}
+
+tr, td{	 width: 65px;
+	height: 55px;
+	padding: 20px; 	
+	text-indent: -9999px;
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	margin: 0; padding: 0;
+	}
+
+
