@@ -102,7 +102,15 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
             }, function () {
                 // $log.info('Modal dismissed at: ' + new Date());
             });
-        };             
+        };        
+
+        $scope.openTab = function(url)
+        {
+            //var win=window.open(url, '_blank');
+            window.location = url;
+            //win.focus();
+        }
+     
         var notifications = WS4Redis({
             uri: Constants.get('webSocketURI')+'notifications?subscribe-user',
             heartbeat_msg: Constants.get('heartBeatMessage'),
@@ -174,7 +182,10 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
                     var gameID = data['gameID'];
                     var gameName = data['gameName'];
                     if(gameName === 'Bingo'){
-                        window.location = '/bingo/?requestee='+requestee+'&acceptee='+acceptee+'&gameID='+gameID;
+                        $scope.openTab('/bingo/?requestee='+requestee+'&acceptee='+acceptee+'&gameID='+gameID);
+                    }
+                    else if(gameName === 'SnakeAndLadder'){
+                        $scope.openTab('/snakes/?requestee='+requestee+'&acceptee='+acceptee+'&gameID='+gameID);
                     }
                 }
             }
@@ -1128,18 +1139,50 @@ mainApp.controller('snakesController',['$scope','Constants','$location','growl',
         $scope.iDice1 = djangoConstants['staticLink']+"images/dice-five.png";
         $scope.iDice2 = djangoConstants['staticLink']+"images/dice-six.png";
         $scope.playerID = Constants.get('userSiteObj').pk;
-        $scope.x = $scope.playerID;
-        current_user = 'user'+$scope.playerID
         
+        $scope.playerID = parseInt(Constants.get('userSiteObj').pk);
+        $scope.acceptee = parseInt($routeParams['acceptee']);
+        $scope.requestee = parseInt($routeParams['requestee']);
+        $scope.gameID = $routeParams['gameID'];
+
+
+        $scope.x = $scope.playerID;
+
         var position = {} 
         var color = {}
-        position[current_user] = 0;
-        color[current_user] = '#00f';
 
-        $scope.acceptSnl = function(id) {
-            opponent = 'user'+id
-            position[opponent] = 0;
-            color[opponent] = '#f00';
+        requester = 'user'+$scope.requestee
+        accepter = 'user'+$scope.acceptee
+        
+        position[requester] = 0;        
+        position[accepter] = 0;
+
+        color[requester] = '#00f';
+        color[accepter] = '#f00';
+
+        
+
+        $scope.publishGame = function(mode,data){
+            if(mode === 'diceRoll'){
+                var options = {
+                    'transformRequest': transformRequestAsFormPost,
+                    'method': 'POST',
+                    'url': '/games/snakes/game_state/',
+                    'data': {
+                        'playerID': Constants.get('userSiteObj').pk,
+                        'gameData': data,
+                        'gameID': $scope.gameID
+                    },
+                    'params': {
+                        'type': 'diceRoll'
+                    }
+                };
+                $http(options).success(function (data) {
+
+                }).error(function (data) {
+                    console.log(data);
+                });
+            }
         }
 
         function shake_rolldice(id){
@@ -1160,7 +1203,7 @@ mainApp.controller('snakesController',['$scope','Constants','$location','growl',
                 alert("You WON!!"); 
                 location.reload(true); 
             }
-            //server_call(id);
+            server_call(id);
         }
         
         function moveuser(user,from,to){
@@ -1225,7 +1268,6 @@ mainApp.controller('snakesController',['$scope','Constants','$location','growl',
             data=JSON.parse(data);
             user = data["user"];
             opp_position = data["position"];
-            color = data["color"];            
             from=position[user];
             to=opp_position[user];
             diff = parseInt(to)-parseInt(from);
@@ -1233,20 +1275,42 @@ mainApp.controller('snakesController',['$scope','Constants','$location','growl',
             document.getElementById('second-dice').src = dice[diff-1]
             $('#location1').text("Opponent is now at " +to+ "!");
             moveuser(user,from,to);
-            $scope.x = $scope.playerID;
-                  
+            $scope.x = $scope.playerID;                  
         }
 
         function server_call(id){
+            var data = {};
             data["user"] = 'user'+id;
-            data["position"] = JSON.stringify(position);
-            data["color"] = JSON.stringify(color);
+            data["position"] = position;
             $scope.x = 0;
-            
-                        
+            $scope.publishGame('diceRoll', JSON.stringify(data));
+        }    
+    
+        function start_game(){
+        	if($scope.playerID === $scope.requestee){
+                $('#color-you').css('background-color','#00f')
+                $('#color-opponent').css('background-color','#f00')
+            }
+            else if($scope.playerID === $scope.acceptee){
+                $('#color-you').css('background-color','#f00')
+                $('#color-opponent').css('background-color','#00f')
+            }
+        }
 
+        var notifications = WS4Redis({
+            uri: Constants.get('webSocketURI')+'snakes_'+$scope.gameID+'?subscribe-broadcast',
+            heartbeat_msg: Constants.get('heartBeatMessage'),
+            receive_message: function(data){
+                data = JSON.parse(data);console.log(data);
+                if(parseInt(data['playerID']) !== parseInt($scope.playerID)){
+                    if(data['mode'] == 'diceRoll'){
+                        reciever_call(data['data']);
+                    }
+                }
+            }
+        });
 
-        }        
+        start_game();
 }]);       
 
 

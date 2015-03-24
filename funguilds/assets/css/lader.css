@@ -55,35 +55,32 @@ textarea{
     background-color:white;
 	}
 
-#chipRed{
+#color-you{
 	background-color: #f00;
 	color: #fff;
 	width: 15px;
 	height: 15px;
-	padding: 10px;
+	padding: 20px;
 	border-radius: 25px;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border: 1px solid #000;
 	text-indent: -9999px;
-	z-index: 2;
-	float: left;
+	z-index: 2;	
 	}
 	
-#chipBlue{
+#color-opponent{
 	background-color: #00f;
 	color: #fff;
 	width: 15px;
 	height: 15px;
-	padding: 10px;
+	padding: 20px;
 	border-radius: 25px;
 	-moz-border-radius: 25px;
 	-webkit-border-radius: 25px;
 	border: 1px solid #000;
 	text-indent: -9999px;
 	z-index: 1;
-	float: left;
-	margin-left: 10px;
 	}
 
 img#firstdice1, img#seconddice1,{
