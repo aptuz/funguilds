@@ -133,4 +133,27 @@ def bingo_game(request):
             redis_publisher.publish_message(message)
         return HttpResponse('success')
     return HttpResponse("ok")
+
+def snake_game(request):
+    if request.method == 'POST':
+        playerID = request.POST['playerID']
+        gameData = request.POST['gameData']
+        key = 'snakes_'+str(request.POST['gameID'])+'_'
+        if request.GET['type'] == 'diceRoll':
+            game_board = cache.get(key+'game_state')
+            if game_board is not None:
+                game_board[playerID] = json.loads(gameData)
+            else:
+                game_board = {}
+                game_board[playerID] = json.loads(gameData)
+            cache.set(key+'game_state', game_board)
+            redis_publisher = RedisPublisher(facility='snakes_'+str(request.POST['gameID']), broadcast=True)
+            data = {
+                'mode': request.GET['type'],
+                'data': gameData,
+                'playerID': playerID
+            }
+            message = RedisMessage(json.dumps(data))
+            redis_publisher.publish_message(message)
+    return HttpResponse("ok")
     

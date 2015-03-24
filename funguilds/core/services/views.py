@@ -21,7 +21,7 @@ def add_games(request, guild_id, game_id):
         return HttpResponse("added")
 
 def if_partial_url(url):
-    partial_urls = [ '/guild_detail','/bingo/','/dots/']
+    partial_urls = [ '/guild_detail','/bingo/','/dots/','/snakes/']
     proceed = False
     for purl in partial_urls:
         if url.startswith(purl):

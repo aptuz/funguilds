@@ -1,15 +1,44 @@
-
-<input type="button" value="Request for Game" ng-click="requestBingo()" />
-<input type="button" value="Start Game" ng-click="startBingo()" />
-<br/>
-<input type="button" value="Stop Game" ng-click="stopBingo()" />
-<br/>
-<div id="container">
+<!-- <div class="bingo_game">
+<div id="">
 
 	<div id="header"></div>
-	
-	<div id="board"></div>
+	<div class="row">
+		<div class="col-xs-2">
+			User1
+		</div>
+		<div class="col-xs-4">
+			<div id="board"></div>
+		</div>
+		<div class="col-xs-2">
+			User2
+		</div>
+	</div>
 
 	<div id="footer"></div>
 
+</div>
+</div> -->
+<br /><br />
+<div class="container">
+<div class="row">
+	<div class="col-xs-3 user1-box">
+		<h3 class="user-heading bg-user1 active">Me</h1>
+		<div class="bingo-title a1">B</div><br />
+		<div class="bingo-title a2">I</div><br />
+		<div class="bingo-title a3">N</div><br />
+		<div class="bingo-title a4">G</div><br />
+		<div class="bingo-title a5">O</div>
+	</div>
+
+	<div class="col-xs-5" id="board">
+
+	</div>
+	<div class="col-xs-3 user2-box">
+		<h3 class="user-heading bg-user2">Opponent</h1>
+		<div class="bingo-title b1">B</div><br />
+		<div class="bingo-title b2">I</div><br />
+		<div class="bingo-title b3">N</div><br />
+		<div class="bingo-title b4">G</div><br />
+		<div class="bingo-title b5">O</div>
+	</div>
 </div>

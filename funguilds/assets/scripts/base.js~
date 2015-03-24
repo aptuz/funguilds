@@ -16,6 +16,7 @@ mainApp.constant("urlRoutes", [
     {'path':'/guild_detail/:game/','templatePath':'guild_detail.html','controller':'GuildDtlController', 'userTemplate':true},
     {'path':'/bingo/','templatePath':'bingo.html','controller':'bingoController'},
     {'path':'/dots/','templatePath':'dots.html','controller':'dotsController'},
+    {'path':'/snakes/','templatePath':'lader.html','controller':'snakesController'},
 ]);
 
 //Filters
@@ -51,7 +52,7 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
             var modalInstance = $modal.open({
                 templateUrl: loadTemplate(Constants.get('staticLink'),Constants.get('templateDir'),'guilds_users.html'),
                 backdrop: true,
-                controller: function ($scope, $modalInstance, $http, transformRequestAsFormPost, user_id, guild_id) {
+                controller: function ($scope, $modalInstance, $http, transformRequestAsFormPost, user_id, guild_id, game) {
                     $scope.cancel = function () {
                         $modalInstance.dismiss('cancel');
                     };
@@ -67,27 +68,21 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
                     });
                        
                     $scope.request_member = function (id) {
-                        console.log(id)
-                    }
-                    /*$scope.guild_create = function ($event, gname, gdesc) {
-                        $event.target.setAttribute('disabled', 'disabled');
                         var options = {
-                            'transformRequest': transformRequestAsFormPost,
-                            'method': 'POST',
-                            'url': '/webservices/api/1/guild/',
-                            'data': {
-                                'name': gname,
-                                'description': gdesc,
-                                'group_type': 'Public',
-                                'created_by': parseInt(user_id)
+                            'method': 'GET',
+                            'url': '/games/request_game/',
+                            'params': {
+                                'user': id,
+                                'requestee': user_id,
+                                'game': game
                             }
                         };
                         $http(options).success(function (data) {
-                            $modalInstance.close(data);
-                        }).error(function (data) {
-                            $event.target.removeAttribute('disabled');
+
+                        }).error(function(data){
+                            alert('error');
                         });
-                    };*/
+                    }
                 },
                 size: 'md',
                 resolve: {
@@ -96,6 +91,9 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
                     },
                     'guild_id': function () {
                         return $routeParams.game;
+                    },
+                    'game': function () {
+                        return game
                     }
                 }
             });
@@ -104,7 +102,14 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
             }, function () {
                 // $log.info('Modal dismissed at: ' + new Date());
             });
-        };             
+        };        
+
+        $scope.openTab = function(url)
+        {
+            //var win=window.open(url, '_blank');
+            //win.focus();
+        }
+     
         var notifications = WS4Redis({
             uri: Constants.get('webSocketURI')+'notifications?subscribe-user',
             heartbeat_msg: Constants.get('heartBeatMessage'),
@@ -176,7 +181,10 @@ mainApp.controller('baseController',['$scope','Constants','$location','growl','$
                     var gameID = data['gameID'];
                     var gameName = data['gameName'];
                     if(gameName === 'Bingo'){
-                        window.location = '/bingo/?requestee='+requestee+'&acceptee='+acceptee+'&gameID='+gameID;
+                        $scope.openTab('/bingo/?requestee='+requestee+'&acceptee='+acceptee+'&gameID='+gameID);
+                    }
+                    else if(gameName === 'SnakeAndLadder'){
+                        $scope.openTab('/snakes/?requestee='+requestee+'&acceptee='+acceptee+'&gameID='+gameID);
                     }
                 }
             }
@@ -523,6 +531,10 @@ mainApp.controller('bingoController',['$scope','Constants','$location','growl','
         $scope.gameID = $routeParams['gameID'];
         var JsonState=[];
 
+        $scope.MyCount = 0;
+        $scope.OpponentCount = 0;
+
+
         var JSONBingo = {"squares": [
                 {"square": "1"},
                 {"square": "2"},
@@ -561,21 +573,36 @@ mainApp.controller('bingoController',['$scope','Constants','$location','growl','
         function rowcompleted (arg) {
 	        //arg = row, diag ,col
             $scope.publishBingoGame('completed_row', 'row');
-            alert('row completed');
-	        //alert(arg+'  completed')
+            $scope.MyCount++;
+            renderBingo('me');
         }
+
+        function renderBingo(user){
+            var cls = '', data;
+            if(user == 'me'){ cls = 'a'; data = $scope.MyCount; }
+            else { cls = 'b';data = $scope.OpponentCount; }
+            for(var iter = 1; iter < data+1;iter++){
+                console.log('.'+cls+iter);
+                $('.'+cls+iter).addClass('active');
+            }
+        }
+
+
         function p_rowcompleted(){
             //other player row completed
-            alert('other player row completed');
+            $scope.OpponentCount++;
+            renderBingo('other');
         }
         function winner () {
 	        $scope.publishBingoGame('winner', 'win');
-            alert('you won');
+            $('#board').addClass("f-darkgray-dark p-5 txt-c bold");
+            $('#board').html("You Won");
         }
         function p_winner(){
             //other player won
            grayout(0);
-            alert('other player won');
+           $('#board').addClass("f-darkgray-dark p-5 txt-c bold");
+           $('#board').html("Other Player Won");
            looseSnd.play();
         }
         //grayout(0)  : To grayout the UI
@@ -948,12 +975,16 @@ mainApp.controller('bingoController',['$scope','Constants','$location','growl','
         };
 
         function grayout(val){
+            $('.bg-user1').removeClass('active');
+            $('.bg-user2').removeClass('active');
 	        if(val){
+                $('.bg-user1').addClass('active');
 		        $('.square').each(function(){
 	         		$(this).removeClass('gray');
                 });
 	        }
 	        else{
+                $('.bg-user2').addClass('active');
 		        $('.square').each(function(){
 			        if($(this).hasClass('gray')){}
 			        else{$(this).addClass('gray');}
@@ -969,7 +1000,7 @@ mainApp.controller('bingoController',['$scope','Constants','$location','growl','
 			      //   if($(this).attr('data-numb')==id){$(this).trigger('click');grayout(1);return false;}
 			
 	         		
-         //        });
+            // });
             k='';
             $('.gray').each(function(){
                     
@@ -1058,9 +1089,7 @@ mainApp.controller('bingoController',['$scope','Constants','$location','growl','
                     win_dec=row_list[0]+row_list[1]+row_list[2]+row_list[3]+row_list[4]+col_list[0]+col_list[1]+col_list[2]+col_list[3]+col_list[4]+diag_list[0]+diag_list[1]
                     if (win_dec>=5) {
                         winSnd.play();
-                        winner();
-
-                        
+                        winner();                        
                     } 
                 } 
             
@@ -1096,7 +1125,192 @@ mainApp.controller('bingoController',['$scope','Constants','$location','growl','
         $scope.startBingoGame();
 }]);
 
+mainApp.controller('snakesController',['$scope','Constants','$location','growl','$http','$timeout','djangoConstants','transformRequestAsFormPost','$routeParams',
+    function($scope,Constants,$location,growl,$http,$timeout,djangoConstants,transformRequestAsFormPost,$routeParams){ 
+        
+        var dice = new Array(djangoConstants['staticLink']+"images/dice-one.png",
+                    djangoConstants['staticLink']+"images/dice-two.png",
+                    djangoConstants['staticLink']+"images/dice-three.png",
+                    djangoConstants['staticLink']+"images/dice-four.png",
+                    djangoConstants['staticLink']+"images/dice-five.png",
+                    djangoConstants['staticLink']+"images/dice-six.png");
 
+        $scope.iDice1 = djangoConstants['staticLink']+"images/dice-five.png";
+        $scope.iDice2 = djangoConstants['staticLink']+"images/dice-six.png";
+        $scope.playerID = Constants.get('userSiteObj').pk;
+        
+        $scope.playerID = parseInt(Constants.get('userSiteObj').pk);
+        $scope.acceptee = parseInt($routeParams['acceptee']);
+        $scope.requestee = parseInt($routeParams['requestee']);
+        $scope.gameID = $routeParams['gameID'];
+
+
+        $scope.x = $scope.playerID;
+
+        var position = {} 
+        var color = {}
+
+        requester = 'user'+$scope.requestee
+        accepter = 'user'+$scope.acceptee
+        
+        position[requester] = 0;        
+        position[accepter] = 0;
+
+        color[requester] = '#00f';
+        color[accepter] = '#f00';
+
+        
+
+        $scope.publishGame = function(mode,data){
+            if(mode === 'diceRoll'){
+                var options = {
+                    'transformRequest': transformRequestAsFormPost,
+                    'method': 'POST',
+                    'url': '/games/snakes/game_state/',
+                    'data': {
+                        'playerID': Constants.get('userSiteObj').pk,
+                        'gameData': data,
+                        'gameID': $scope.gameID
+                    },
+                    'params': {
+                        'type': 'diceRoll'
+                    }
+                };
+                $http(options).success(function (data) {
+
+                }).error(function (data) {
+                    console.log(data);
+                });
+            }
+        }
+
+        function shake_rolldice(id){
+            user='user'+id
+            var num1 = Math.floor (Math.random ( ) * 6 + 1);
+	        changedice(user,num1);
+	        from = position[user];
+            console.log(position[user]);
+            position[user] = parseInt(position[user]) + num1;    
+            to = position[user]
+            moveuser(user,from,to);            
+            srl = check_user_position(user,to);
+            if (srl){
+                position[user] = parseInt(srl);
+                moveuser(user,to,position[user]);
+            }
+	        if (position[user] >= 100) { 
+                alert("You WON!!"); 
+                location.reload(true); 
+            }
+            server_call(id);
+        }
+        
+        function moveuser(user,from,to){
+   
+            if (to>0){ 
+                if (to>=100){to=100}  
+            	document.getElementById('box'+to).style.backgroundColor = color[user];
+                if (from >= 1){
+                	document.getElementById('box'+from).style.backgroundColor = "transparent";
+                }
+            }
+        }
+
+        function check_user_position(user,a){
+            snake_head={'17':'7','54':'34','62':'19','64':'60','87':'24','93':'73','95':'75','98':'79'}
+            lader_foot={'1':'38','4':'14','9':'31','21':'42','28':'84','51':'67','80':'100','71':'91'}
+            if ( a in snake_head){
+                position_msg = "You are at "+a+".\nOh No! It's a Snake!";
+                a = snake_head[a];
+            }
+            else if ( a in lader_foot){
+                position_msg = "You are at "+a+".\nYay! A ladder!";
+                a = lader_foot[a];    
+            }
+	        else if (a === 100){
+                position_msg = "Congratulations You WON..";
+            }
+            else{
+                position_msg = '';
+		    }
+            $('#location1').text("You are now at " +a+ "!");
+            $('#position1').text(position_msg);            
+            if (position_msg === '' ){
+                return false;
+            }            
+            return a;
+        }
+
+        function changedice(user,a){
+            document.getElementById('first-dice').src = dice[a-1]
+        }
+
+        $scope.validatePlayer = function(id){
+            if(parseInt($scope.playerID) === parseInt($scope.x)){
+                return true;                
+            }
+            else{
+                alert("It's opponent's turn");
+                return false;
+            }
+        };
+        
+        $scope.diceroller = function(id){    
+            if ($scope.validatePlayer(id)){
+            	$scope.$evalAsync(shake_rolldice(id))
+            	var roll_dice_mp3 = new Audio(djangoConstants['staticLink']+"audio/muscic.mp3");
+            	roll_dice_mp3.play()
+            }
+	    }
+
+        function reciever_call(data){
+            data=JSON.parse(data);
+            user = data["user"];
+            opp_position = data["position"];
+            from=position[user];
+            to=opp_position[user];
+            diff = parseInt(to)-parseInt(from);
+            position=opp_position;
+            document.getElementById('second-dice').src = dice[diff-1]
+            $('#location1').text("Opponent is now at " +to+ "!");
+            moveuser(user,from,to);
+            $scope.x = $scope.playerID;                  
+        }
+
+        function server_call(id){
+            var data = {};
+            data["user"] = 'user'+id;
+            data["position"] = position;
+            $scope.x = 0;
+            $scope.publishGame('diceRoll', JSON.stringify(data));
+        }    
+    
+        function start_game(){
+        	if($scope.playerID === $scope.requestee){
+                $('#color-you').css('background-color','#00f')
+                $('#color-opponent').css('background-color','#f00')
+            }
+            else if($scope.playerID === $scope.acceptee){
+                $('#color-you').css('background-color','#f00')
+                $('#color-opponent').css('background-color','#00f')
+            }
+        }
+
+        var notifications = WS4Redis({
+            uri: Constants.get('webSocketURI')+'snakes_'+$scope.gameID+'?subscribe-broadcast',
+            heartbeat_msg: Constants.get('heartBeatMessage'),
+            receive_message: function(data){
+                data = JSON.parse(data);console.log(data);
+                if(parseInt(data['playerID']) !== parseInt($scope.playerID)){
+                    if(data['mode'] == 'diceRoll'){
+                        reciever_call(data['data']);
+                    }
+                }
+            }
+        });
+
+        start_game();
+}]);       
 
 
 
